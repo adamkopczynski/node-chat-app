@@ -9,9 +9,6 @@ const app = express();
 
 app.use(express.static(publicPath));
 
-app.get('/', (req, res) => {
-
-})
 
 app.listen(PORT, () => {
     console.log(`App runing on port ${PORT}`);
