@@ -18,6 +18,14 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         console.log('User disconnected')
     })
+
+    socket.on('createMessage', (message) => {
+        console.log(message)
+    })
+
+    socket.emit('emit', {from: 'Jean', text: 'Some text from server'})
+
+
 })
 
 
