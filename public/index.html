@@ -2,23 +2,30 @@
 <html>
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="/css/styles.css">
     </head>
-    <body>
-        <p>Welcome to the chat app</p>
+    <body class="chat">
 
-        <div class="messages">
-            <ol class="messages-list"></ol>
+        <div class="chat__sidebar">
+            <h2>Members: </h2>
+            <ul class="members-list"></ul>
         </div>
 
-        <form action="" class="message-form">
-            <input type="text" name="message" placeholder="Message">
-            <button class="send-btn" type="submit">
-                Send
-            </button>
-            <button class="share-location-btn">
-                Share location
-            </button>
-        </form>
+        <main class="chat__main">
+            <ol class="messages"></ol>
+        </main>
+
+        <footer class="chat__footer"></div>
+            <form class="message-form">
+                <input type="text" class="message-input" name="message" placeholder="Message">
+                <button class="send-btn btn" type="submit">
+                    Send
+                </button>
+                <button class="share-location-btn btn">
+                    Share location
+                </button>
+            </form>
+        </footer>
 
         <script src="/js/jquery-3.3.1.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
