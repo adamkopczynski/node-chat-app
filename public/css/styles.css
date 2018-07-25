@@ -134,6 +134,7 @@ ul, li {
 
 .message{
     max-width: 45%;
+    width: auto;
 }
 
 .message .message__title{
