@@ -13,19 +13,20 @@
 
         <main class="chat__main">
             <ol class="messages"></ol>
+
+            <footer class="chat__footer"></div>
+                <form class="message-form">
+                    <input type="text" class="message-input" name="message" placeholder="Message">
+                    <button class="send-btn btn" type="submit">
+                        Send
+                    </button>
+                    <button class="share-location-btn btn">
+                        Share location
+                    </button>
+                </form>
+            </footer>
         </main>
 
-        <footer class="chat__footer"></div>
-            <form class="message-form">
-                <input type="text" class="message-input" name="message" placeholder="Message">
-                <button class="send-btn btn" type="submit">
-                    Send
-                </button>
-                <button class="share-location-btn btn">
-                    Share location
-                </button>
-            </form>
-        </footer>
 
         <script id="message-template" type="text/template">
             <li class="message">
