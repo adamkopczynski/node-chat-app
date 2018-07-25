@@ -93,6 +93,8 @@ socket.on('newLocationMessage', (message) => {
 socket.on('updateUsersList', (users) => {
     const template = $('#member-template').html();
     const members = $('.members-list');
+
+    members.html('');
     
     users.map(user => {
         const html = Mustache.render(template, {
