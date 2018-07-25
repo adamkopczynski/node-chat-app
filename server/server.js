@@ -22,18 +22,26 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         const user = users.removeUser(socket.id);
 
-        io.to(user.room).emit('newMessage', `${user.name} has left the room`);
+        io.to(user.room).emit('newMessage', generateMessage('Admin', `${user.name} has left the room`));
         io.to(user.room).emit('updateUsersList', users.getUsersList(user.room));
     })
 
     socket.on('createMessage', (message, callback) => {
-        io.emit('newMessage', generateMessage(message.from, message.text))
+        const user = users.getUser(socket.id);
+
+        if(user){
+            io.to(user.room).emit('newMessage', generateMessage(user.name, message.text))
+        }
         callback();
     })
 
     socket.on('createLocationMessage', (coords) => {
+        const user = users.getUser(socket.id);
 
-        io.emit('newLocationMessage', generateLocationMessage('Admin', coords))
+        if(user){
+            io.to(user.room).emit('newLocationMessage', generateLocationMessage(user.name, coords))
+        }
+
     })
 
     socket.on('join', (params, callback) => {
