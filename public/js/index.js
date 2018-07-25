@@ -9,9 +9,10 @@ $('.message-form').on('submit', (e) => {
 })
 
 socket.on('newMessage', (message) => {
+    const formattedTime = moment(message.createdAt).format('h:mm a');
 
     let li = $('<li class="message"></li>');
-    li.text(`${message.from}: ${message.text}`);
+    li.text(`${message.from} ${formattedTime}: ${message.text}`);
     $('.messages').append(li);
 })
 
@@ -19,31 +20,28 @@ let locationBtn = $('.share-location-btn');
 locationBtn.on('click', (e) => {
     e.preventDefault();
 
-    locationButton.attr('disabled', 'disabled').text('Sending..');
-
     if(!navigator.geolocation){
        return alert('Geolocation is not supported by your browser.')
     }
     
     navigator.geolocation.getCurrentPosition(function (position){
 
-        locationButton.removeAttr('disabled').text('Share location');
         socket.emit('createLocationMessage', {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude
         })
 
     }, function(){
-        locationButton.removeAttr('disabled').text('Share location');
         alert('Unable to fetch the location.')
     })
 })
 
 socket.on('newLocationMessage', (message) => {
+    const formattedTime = moment(message.createdAt).format('h:mm a');
 
     let li = $('<li class="message"></li>');
     let a = $('<a target="_blank">My current location</a>')
-    li.text(`${message.from}: `);
+    li.text(`${message.from} ${formattedTime}: `);
     a.attr('href', message.url);
     li.append(a);
     $('.messages').append(li);
