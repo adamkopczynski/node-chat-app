@@ -108,12 +108,28 @@ ul, li {
     list-style-type: none;
   }
   
-  .chat__sidebar li {
+  .chat__sidebar .member{
     background: #e6eaee;
     border: 1px solid #e1e1e1;
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .chat__sidebar .member .member__icon{
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    margin-right: 15px;
+    border-radius: 50%;
+    color: #fff;
+    background-color: rgb(60, 141, 221);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
 

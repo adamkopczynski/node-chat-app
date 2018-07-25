@@ -26,7 +26,7 @@ socket.on('connect', () => {
             alert(err);
         }
         else{
-
+            console.log('no error')
         }
     })
 })
@@ -88,4 +88,18 @@ socket.on('newLocationMessage', (message) => {
 
     $('.messages').append(html);
     scrollToBottom();
+})
+
+socket.on('updateUsersList', (users) => {
+    const template = $('#member-template').html();
+    const members = $('.members-list');
+    
+    users.map(user => {
+        const html = Mustache.render(template, {
+            name: user,
+            initials: user[0]
+        });
+    
+        members.append(html);
+    })
 })
