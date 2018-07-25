@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
 *{
     margin: 0;
     padding:0;
@@ -9,6 +11,7 @@
 .chat{
     height: 100vh;
     display: grid;
+    font-family: 'Josefin Sans', sans-serif;
     grid-template-columns: 25% 75%;
     grid-template-rows: auto 50px;
     grid-template-areas: 
@@ -33,14 +36,35 @@
     list-style: none;
 }
 
-.messages .message{
+.message{
     max-width: 45%;
+}
+
+.message .message__title{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.message .message__title h4{
+    font-size: 18px;
+    font-weight: bold;
+    color: #222;
+    margin: 4px 6px;
+}
+
+.message .message__title span{
+    color: #666;
+}
+
+.message .message__content{
     min-height: 30px;
     margin-bottom: 10px;
-    padding: 4px 8px;
+    padding: 8px;
     border-radius: 15px;
     background-color: #2a4bb5;
     color: #fff;
+    font-size: 14px;
     text-overflow: clip;
 }
 

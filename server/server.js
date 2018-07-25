@@ -23,10 +23,9 @@ io.on('connection', (socket) => {
         console.log('User disconnected')
     })
 
-    socket.on('createMessage', (message) => {
-        console.log(message);
-
-        socket.broadcast.emit('newMessage', generateMessage(message.from, message.text))
+    socket.on('createMessage', (message, callback) => {
+        io.emit('newMessage', generateMessage(message.from, message.text))
+        callback();
     })
 
     socket.on('createLocationMessage', (coords) => {
